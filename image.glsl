@@ -9,5 +9,5 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float bright = 2./(pow(length(point*(15.+7.*sin(3.*iTime/7.))),2.)+1.);
     vec3 q[3] = vec3[](sinTriad((iTime+distance(center,uv))),sinTriad((iTime+distance(center,uv))*5./3.),sinTriad((iTime+distance(center,uv))*1.5));
     fragColor = 
-    vec4(bright*q),1.);
+    vec4(vec3(bright)*vec3(length(q[0]),length(q[1]),length(q[2])),1.);
 }
