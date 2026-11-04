@@ -5,7 +5,7 @@ vec3 sinTriad(float inp){
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec3 t=vec3(0.);
     vec3[3] q=vec3[3](vec3(0.),vec3(0.),vec3(0.));
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 3; i++) {
         vec2 uv = fragCoord / iResolution.xy;
         vec3 paint = vec3(uv, 0.9);
         vec2 center = 1.*vec2(0.5 + 0.2 * 2.*sin(iTime*pow(float(i+1),1./6.)*randBases[i*8+1]), 3.*cos(iTime*pow(float(i+1),1./6.)*randBases[i*8+2])/8.+.5)-vec2(0.);
