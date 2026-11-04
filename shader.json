@@ -3,7 +3,7 @@
   "info": {
     "id": "",
     "name": "gorb interference",
-    "description": "",
+    "description": "This shader shows gorbs interfering with other gorbs",
     "tags": []
   },
   "renderpass": [
