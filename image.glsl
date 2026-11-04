@@ -5,13 +5,13 @@ vec3 sinTriad(float inp){
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec3 t=vec3(0.);
     vec3[3] q=vec3[3](vec3(0.),vec3(0.),vec3(0.));
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 128; i++) {
         vec2 uv = fragCoord / iResolution.xy;
         vec3 paint = vec3(uv, 0.9);
-        vec2 center = vec2(0.5 + 0.2 * sin(iTime*float(i)*randBases[i*8+1]), cos(iTime*float(i)*randBases[i*8+2])/8.+.5);
+        vec2 center = vec2(0.5 + 0.2 * sin(iTime*pow(float(i),1./6.)*randBases[i*8+1]), cos(iTime*pow(float(i),1./6.)*randBases[i*8+2])/8.+.5);
         vec2 point = (uv - center) * vec2(iResolution.x/iResolution.y, 1.0);
         float bright = 2./(pow(length(point*(15.+7.*randBases[i*8]*sin(3.*iTime/7.*randBases[i*8+3]))),2.)+1.);
-        vec3 qtmp[3] = vec3[](sinTriad((iTime*17.+(distance(center,uv))*31.)*randBases[i*8+4]),sinTriad((iTime*128.+(distance(center,uv))*5./3.*47.)*randBases[i*8+5]),sinTriad(((iTime*12.+distance(center,uv))*1.5*61.)*randBases[i*8+4]));
+        vec3 qtmp[3] = vec3[](sinTriad((iTime*17.+(distance(center,uv))*31.)*randBases[i*8+4]),sinTriad((iTime*19.+(distance(center,uv))*5./3.*47.)*randBases[i*8+5]),sinTriad(((iTime*12.+distance(center,uv))*1.5*61.)*randBases[i*8+4]));
         q[0] += qtmp[0]*bright;
         q[1] += qtmp[1]*bright;
         q[2] += qtmp[2]*bright;
